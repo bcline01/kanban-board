@@ -22,24 +22,34 @@ const Navbar = () => {
         <Link to='/'>Krazy Kanban Board</Link>
       </div>
       <ul>
-      {
-        !loginCheck ? (
-          <li className='nav-item'>
-            <button type='button'>
-              <Link to='/login'>Login</Link>
-            </button>
-          </li>
-        ) : (
-          <li className='nav-item'>
-            <button type='button' onClick={() => {
-              auth.logout();
-            }}>Logout</button>
-          </li>
-        )
-      }
+        {
+          !loginCheck ? (
+            <>
+              {/* Render login button */}
+              <li className='nav-item'>
+                <button type='button'>
+                  <Link to='/login'>Login</Link>
+                </button>
+              </li>
+              {/* Render sign-up button */}
+              <li className='nav-item'>
+                <button className='btn' type='button'>
+                  <Link to='/signup'>Sign Up</Link>
+                </button>
+              </li>
+            </>
+          ) : (
+            <li className='nav-item'>
+              <button type='button' onClick={() => {
+                auth.logout();
+              }}>Logout</button>
+            </li>
+          )
+        }
       </ul>
     </div>
   )
+  
 }
 
 export default Navbar;
